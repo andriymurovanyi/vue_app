@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0,
+          maximum-scale=1.0, minimum-scale=1.0 shrink-to-fit=no" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>vueApplication</title>
+</head>
+<body>
+    <div class="container pt-5" id="app">
+        <div class="row">
+            <div class="col">
+                <h1>Developers</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="search">Search</label>
+                    <input type="text" class="form-control" id="search" placeholder="Developer name ...">
+                </div>
+                <hr>
+                <ul class="list-group">
+                    <li v-for="(developer, index) in developers"
+                        class="list-group-item list-group-item-action pointer"
+
+                        @click="selectDev(index)"
+                        :class="{'active': currentIndex === index}">
+                        {{developer.name}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8 pt-4">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2>{{developer.name}}</h2>
+                        <!-- v-bind - : -->
+                        <img
+                            :src="developer.photo"
+                            :alt="developer.name"
+                            class="rounded dev_photo">
+
+                    </div>
+                    <div class="col-md-7 pt-2">
+                        <h5>About developer</h5>
+                        <ul>
+                            <li>Company - <strong>{{developer.company}}</strong></li>
+                            <li>Product - <strong>{{developer.product}}</strong></li>
+                            <li>Occupation - <strong>{{developer.occupation}}</strong></li>
+                        </ul>
+                        <p>To see more - click <a
+                                :href="developer.link"
+                                target="_blank"
+                                >here</a></p>
+                        <p>To cooperate - <strong>a button below :) </strong></p>
+
+                        <button class="btn btn-outline-success  mr-3">Cooperation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

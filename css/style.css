@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: url(../img/first_bg.gif);
+}
+
+.dev_photo{
+    height: 200px;
+    width: 270px;
+}
+
+.pointer{
+    cursor: pointer;
+}
