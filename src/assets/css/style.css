@@ -18,9 +18,29 @@ body{
 }
 
 .block{
-    height: 36px;
+    height: 50px;
 }
 
 .modal{
     display: block;
+}
+
+.slide-enter{
+    opacity: 0;
+}
+
+.slide-enter-active{
+    transition: opacity 0.5s;
+}
+
+.slide-leave-active{
+    transition: opacity 0.5s;
+}
+
+.slide-leave-to{
+    opacity: 0;
+}
+
+.progress{
+    border: aqua 1px solid;
 }
