@@ -7,7 +7,7 @@ const developers = [
       "./img/raymond.jpg",
       "https://en.wikipedia.org/wiki/Jade_Raymond"),
   developer(
-      "Gage Newell",
+      "Gabe Newell",
       "Valve",
       "Director",
       "Dota 2",
@@ -30,7 +30,9 @@ new Vue({
         developers: developers,
         developer: developers[0],
         currentIndex: 0,
-        showLink: false
+        showLink: false,
+        search: "",
+        showModal: false
     },
 
     methods:{
@@ -38,6 +40,18 @@ new Vue({
             console.log("Click", index);
             this.developer = developers[index];
             this.currentIndex = index;
+        }
+    },
+    computed:{
+        changeButton: function (flag) {
+            return this.showLink ? "Hide link": "Show link"
+        },
+
+        filterDevs: function () {
+            return this.developers.filter(item => {
+                return ~item.name.indexOf(this.search) ||
+                       ~item.company.indexOf(this.search)
+            })
         }
     }
 });

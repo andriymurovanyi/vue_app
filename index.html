@@ -23,11 +23,16 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="search">Search</label>
-                    <input type="text" class="form-control" id="search" placeholder="Developer name ...">
+                    <input type="text"
+                           class="form-control"
+                           id="search"
+                           placeholder="Developer name ..."
+                           v-model="search"
+                    >
                 </div>
                 <hr>
                 <ul class="list-group">
-                    <li v-for="(developer, index) in developers"
+                    <li v-for="(developer, index) in filterDevs"
                         class="list-group-item list-group-item-action pointer"
 
                         @click="selectDev(index)"
@@ -54,18 +59,54 @@
                             <li>Product - <strong>{{developer.product}}</strong></li>
                             <li>Occupation - <strong>{{developer.occupation}}</strong></li>
                         </ul>
-                        <p>To see more - click <a
-                                :href="developer.link"
-                                target="_blank"
-                                >here</a></p>
+                        <div class="block">
+                            <p v-if="showLink">To see more - click <a
+                                    :href="developer.link"
+                                    target="_blank"
+                                    >here</a></p>
+                        </div>
                         <p>To cooperate - <strong>a button below :) </strong></p>
-
-                        <button class="btn btn-outline-success  mr-3">Cooperation</button>
+                        <button @click="showLink = !showLink"
+                                class="btn btn-primary rounded"
+                                v-text="changeButton"></button>
+                        <button  class="btn btn-outline-success rounded mr-3"
+                                 @click="showModal = true"
+                        >Cooperate</button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="modal fade show" tabindex="-1" role="dialog" v-if="showModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Want to cooperate ? </h5>
+                        <button type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                                @click="showModal = false"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>"Show link" button helps you to redirect on Wiki for further details</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-success"
+                                data-dismiss="modal"
+                                @click="showModal = false"
+                        >Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show" v-if="showModal"></div>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./js/script.js"></script>

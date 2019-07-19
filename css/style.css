@@ -16,3 +16,11 @@ body{
 .pointer{
     cursor: pointer;
 }
+
+.block{
+    height: 36px;
+}
+
+.modal{
+    display: block;
+}
